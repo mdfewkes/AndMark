@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+</head>
+<body>
+	<p><button id="B_StartTime">Reset Time</button>
+	<p><button id="B_Sec1">Cue 1</button><textarea id="T_Sec1" rows="1" cols="20">In</textarea>
+	<p><button id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Out</textarea>
+	<p><button id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Cut</textarea>
+	<p><button id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Mark</textarea>
+	<p id="print">
+
+<script>
+	var startTime = Math.floor(Date.now() / 1000);
+	var currentTime = Math.floor(Date.now() / 1000);
+	var eventList = "";
+	
+	var startButton = document.getElementById("B_StartTime");
+
+	var cue1Button = document.getElementById("B_Sec1");
+	var cue2Button = document.getElementById("B_Sec2");
+	var cue3Button = document.getElementById("B_Sec3");
+	var cue4Button = document.getElementById("B_Sec4");
+
+	startButton.addEventListener('click', function(){startTime = Math.floor(Date.now() / 1000);});
+
+	cue1Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec1").value);});
+	cue2Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec2").value);});
+	cue3Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec3").value);});
+	cue4Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec4").value);});
+
+
+	function timeToString() {
+		currentTime =  Math.floor(Date.now() / 1000);
+		var diff = currentTime - startTime;
+		var h = Math.floor(diff / 3600);;
+		var m = Math.floor(diff / 60);;
+		var s = Math.floor(diff % 60);;
+		h = checkTime(h);
+		m = checkTime(m);
+		s = checkTime(s);
+		var stringer = "" + h + ":" + m + ":" + s;
+		return stringer;
+	}
+
+	function addToCueList(cueName) {
+		var addCue = "<br>" + cueName + " " + timeToString() + "";
+		eventList += addCue;
+		document.getElementById("print").innerHTML = eventList;
+	}
+
+	function checkTime(i) {
+		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		return i;
+	}
+
+</script>
+
+</body>
