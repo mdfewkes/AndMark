@@ -185,7 +185,7 @@ p {
 		if(length >= 1 && collapsList[cueNumber] && eventList[length-1][1] == cueNumber) {
 			eventList[length-1][0] = addCue;
 		} else {
-			eventList.push([addCue, cueNumber]);
+			eventList.push([addCue, cueNumber, false]);
 		}
 		var printList = "";
 		for (i in eventList) {
