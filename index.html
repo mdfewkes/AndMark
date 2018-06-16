@@ -4,13 +4,36 @@
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 </head>
+<style>
+body {
+    background-color: #000000;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: verdana;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+p {
+    color: white;
+    text-align: center;
+    font-family: verdana;
+}
+</style>
 <body>
-	<p><button id="B_UseIntern">Internal Clock</button><button id="B_UseReal">Realworld Clock</button>
-	<p><button id="B_StartTime">Reset Time</button><button id="B_RestList">Reset List</button>
-	<p><button id="B_Sec1">Cue 1</button><textarea id="T_Sec1" rows="1" cols="20">Cut Start</textarea>
-	<p><button id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea>
-	<p><button id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea>
-	<p><button id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Other</textarea>
+	<p><button class="button" id="B_UseIntern">Internal Clock</button><button class="button" id="B_UseReal">Realworld Clock</button>
+	<p><button class="button" id="B_StartTime">Reset Time</button><button class="button" id="B_RestList">Reset List</button>
+	<p><button class="button" id="B_Sec1">Cue 1</button><textarea id="T_Sec1" rows="1" cols="20">Cut Start</textarea>
+	<p><button class="button" id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea>
+	<p><button class="button" id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea>
+	<p><button class="button" id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Other</textarea>
 	<p id="print">
 
 <script>
