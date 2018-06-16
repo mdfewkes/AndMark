@@ -74,7 +74,7 @@ p {
 </style>
 <body>
 	<div id="title">
-		<p><button class="button2"">And Mark</button>
+		<p><button class="button2" id="titleButton">And Mark</button>
 		<p><button class="button1" id="B_Functions2">Cue List</button>
 		<button class="button1" id="B_Settings3">Settings</button>
 	</div>
@@ -107,6 +107,7 @@ p {
 	</div>
 
 <script>
+	document.getElementById("titleButton").style.fontSize = "18px";
 	document.getElementById("B_UseReal").style.fontWeight = "bold";
     document.getElementById("C_Sec1").checked = true;
     document.getElementById("C_Sec2").checked = true;
