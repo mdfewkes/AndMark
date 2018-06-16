@@ -8,7 +8,20 @@
 body {
     background-color: #000000;
 }
-.button {
+.button1 {
+    background-color: #135fd8;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-family: verdana;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button2 {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -28,12 +41,12 @@ p {
 }
 </style>
 <body>
-	<p><button class="button" id="B_UseIntern">Internal Clock</button><button class="button" id="B_UseReal">Realworld Clock</button>
-	<p><button class="button" id="B_StartTime">Reset Time</button><button class="button" id="B_RestList">Reset List</button>
-	<p><button class="button" id="B_Sec1">Cue 1</button><textarea id="T_Sec1" rows="1" cols="20">Cut Start</textarea>
-	<p><button class="button" id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea>
-	<p><button class="button" id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea>
-	<p><button class="button" id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Other</textarea>
+	<p><button class="button1" id="B_UseIntern">Internal Clock</button><button class="button1" id="B_UseReal">Realworld Clock</button>
+	<p><button class="button1" id="B_StartTime">Reset Time</button><button class="button1" id="B_RestList">Reset List</button>
+	<p><button class="button2" id="B_Sec1">Cue 1</button><textarea id="T_Sec1" rows="1" cols="20">Cut Start</textarea><input type="checkbox" id="C_Sec1">Collapse
+	<p><button class="button2" id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea><input type="checkbox" id="C_Sec2">Collapse
+	<p><button class="button2" id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea><input type="checkbox" id="C_Sec3">Collapse
+	<p><button class="button2" id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Other</textarea><input type="checkbox" id="C_Sec4">Collapse
 	<p>Last Cue
 	<p id="monitor">
 	<p>All Cues
@@ -41,10 +54,19 @@ p {
 
 <script>
 	document.getElementById("B_UseReal").style.fontWeight = "bold";
+    document.getElementById("C_Sec1").checked = true;
+    document.getElementById("C_Sec2").checked = true;
+
+
 	var startTime = Math.floor(Date.now() / 1000);
 	var currentTime = Math.floor(Date.now() / 1000);
 	var eventList = [];
 	var usingRealtime = true;
+	var collapsList = [true,
+						document.getElementById("C_Sec1").checked,
+						document.getElementById("C_Sec2").checked,
+						document.getElementById("C_Sec3").checked,
+						document.getElementById("C_Sec4").checked]
 	
 	var internButton = document.getElementById("B_UseIntern");
 	var externButton = document.getElementById("B_UseReal");
@@ -105,24 +127,26 @@ p {
 	}
 
 	function addToCueList(cueName, cueNumber) {
+		collapsList = [true,
+						document.getElementById("C_Sec1").checked,
+						document.getElementById("C_Sec2").checked,
+						document.getElementById("C_Sec3").checked,
+						document.getElementById("C_Sec4").checked]
+		var length = eventList.length;
+
 		var addCue = "" + cueName + " " + timeToString() + "<br>";
-		eventList.push([addCue, cueNumber]);
+		if(length >= 1 && collapsList[cueNumber] && eventList[length-1][1] == cueNumber) {
+			eventList[length-1][0] = addCue;
+		} else {
+			eventList.push([addCue, cueNumber]);
+		}
 		var printList = "";
 		for (i in eventList) {
 			printList += eventList[i][0];
 		}
 		document.getElementById("print").innerHTML = printList;
 		var monitorList = "";
-		var length = eventList.length;
-		if(length >= 1) {
-			monitorList += eventList[length-1][0];
-		}
-		// if(length >= 2) {
-		// 	monitorList += eventList[length-2][0];
-		// }
-		// if(length >= 3) {
-		// 	monitorList += eventList[length-3][0];
-		// }
+		monitorList += eventList[length-1][0];
 		document.getElementById("monitor").innerHTML = monitorList;
 	}
 
