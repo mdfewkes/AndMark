@@ -51,8 +51,9 @@ body {
     padding: 10px 10px;
     text-align: center;
     text-decoration: none;
+    text-shadow: 2px 2px darkblue;
     display: inline-block;
-    font-size: 12px;
+    font-size: 14px;
     font-family: verdana;
     margin: 4px 2px;
     cursor: pointer;
@@ -64,11 +65,25 @@ body {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
+    text-shadow: 2px 2px DARKOLIVEGREEN;
     display: inline-block;
     margin: auto;
     width: 35%;
     font-size: 16px;
     font-family: verdana;
+    cursor: pointer;
+}
+.button3 {
+    background-color: #135fd8;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-family: verdana;
+    margin: 4px 2px;
     cursor: pointer;
 }
 p {
@@ -87,8 +102,8 @@ p {
 	</div>
 	<div id="settings">
 		<p><button class="button1" id="B_Functions1">Cue List</button><button class="button1" id="B_CheckList">Check List</button>
-		<p><button class="button1" id="B_UseIntern">Internal Clock</button><button class="button1" id="B_UseReal">Realworld Clock</button>
-		<br><button class="button1" id="B_StartTime1">Reset Time</button><button class="button1" id="B_RestList1">Reset List</button>
+		<p><button class="button3" id="B_UseIntern">Internal Clock</button><button class="button3" id="B_UseReal">Realworld Clock</button>
+		<br><button class="button3" id="B_StartTime1">Reset Time</button><button class="button3" id="B_RestList1">Reset List</button>
 		<p><textarea id="T_Sec1" rows="1" cols="20">Cut Start</textarea><input type="checkbox" id="C_Sec1">Collapse
 		<p><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea><input type="checkbox" id="C_Sec2">Collapse
 		<p><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea><input type="checkbox" id="C_Sec3">Collapse
@@ -96,7 +111,7 @@ p {
 	</div>
 	<div id="functions">
 		<p><button class="button1" id="B_Settings1">Settings</button>
-		<br><button class="button1" id="B_StartTime2">Reset Time</button><button class="button1" id="B_RestList2">Reset List</button>
+		<br><button class="button3" id="B_StartTime2">Reset Time</button><button class="button3" id="B_RestList2">Reset List</button>
 		<p><button class="button2" id="B_Sec1">Cue 1</button>
 		<button class="button2" id="B_Sec2">Cue 2</button>
 		<p><button class="button2" id="B_Sec3">Cue 3</button>
