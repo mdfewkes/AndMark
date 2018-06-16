@@ -161,7 +161,10 @@ p {
 		document.getElementById("settings").style.display = "none";
 		document.getElementById("functions").style.display = "none";
 		document.getElementById("checkList").style.display = "block";
+		cleanCheckList();
+		fillCheckList();
 	});
+
 	internButton.addEventListener('click', function(){
 		usingRealtime = false;
 		document.getElementById("B_UseIntern").style.fontWeight = "bold";
@@ -245,6 +248,30 @@ p {
 	function checkTime(i) {
 		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		return i;
+	}
+
+	function cleanCheckList() {
+		var parent = document.getElementById("check");
+		while(true) {
+			var child = document.getElementById("checkItem");
+			if(child == null) {
+				return;
+			} else {
+				parent.removeChild(child);
+			}
+		}
+	}
+
+	function fillCheckList() {
+		var parent = document.getElementById("check");
+		for(i in eventList) {
+			var child = document.createElement("div");
+			child.id = "checkItem";
+			var text = eventList[i][0].split("<br>");
+			child.innerHTML = text[0];
+			parent.appendChild(child);
+		}
+
 	}
 
 </script>
