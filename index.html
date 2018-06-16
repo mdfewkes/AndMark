@@ -78,6 +78,11 @@ p {
 	var cue3Button = document.getElementById("B_Sec3");
 	var cue4Button = document.getElementById("B_Sec4");
 
+	var cue1Check = document.getElementById("C_Sec1");
+	var cue2Check = document.getElementById("C_Sec2");
+	var cue3Check = document.getElementById("C_Sec3");
+	var cue4Check = document.getElementById("C_Sec4");
+
 	internButton.addEventListener('click', function(){
 		usingRealtime = false;
 		document.getElementById("B_UseIntern").style.fontWeight = "bold";
@@ -101,6 +106,11 @@ p {
 	cue2Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec2").value, 2);});
 	cue3Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec3").value, 3);});
 	cue4Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec4").value, 4);});
+
+	cue1Check.addEventListener('click', function(){collapsList[1] = cue1Check.checked});
+	cue2Check.addEventListener('click', function(){collapsList[2] = cue2Check.checked});
+	cue3Check.addEventListener('click', function(){collapsList[3] = cue3Check.checked});
+	cue4Check.addEventListener('click', function(){collapsList[4] = cue4Check.checked});
 
 
 	function timeToString() {
@@ -127,13 +137,7 @@ p {
 	}
 
 	function addToCueList(cueName, cueNumber) {
-		collapsList = [true,
-						document.getElementById("C_Sec1").checked,
-						document.getElementById("C_Sec2").checked,
-						document.getElementById("C_Sec3").checked,
-						document.getElementById("C_Sec4").checked]
 		var length = eventList.length;
-
 		var addCue = "" + cueName + " " + timeToString() + "<br>";
 		if(length >= 1 && collapsList[cueNumber] && eventList[length-1][1] == cueNumber) {
 			eventList[length-1][0] = addCue;
