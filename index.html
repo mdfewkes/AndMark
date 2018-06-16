@@ -178,6 +178,7 @@ p {
 	    document.getElementById("B_Sec2").innerHTML = document.getElementById("T_Sec2").value;
 	    document.getElementById("B_Sec3").innerHTML = document.getElementById("T_Sec3").value;
 	    document.getElementById("B_Sec4").innerHTML = document.getElementById("T_Sec4").value;
+		checkListButton.innerHTML = "Check List"; //remove when CheckList works
 	});
 	functionsButton2.addEventListener('click', function(){
 		document.getElementById("settings").style.display = "none";
@@ -186,12 +187,13 @@ p {
 		document.getElementById("title").style.display = "none";
 	});
 	checkListButton.addEventListener('click', function(){
-		document.getElementById("settings").style.display = "none";
-		document.getElementById("functions").style.display = "none";
-		document.getElementById("checkList").style.display = "block";
-		document.getElementById("title").style.display = "none";
-		cleanCheckList();
-		fillCheckList();
+		checkListButton.innerHTML = "not yet available"; //remove when CheckList works
+		// document.getElementById("settings").style.display = "none";  // vvv include after finishing Check List vvv
+		// document.getElementById("functions").style.display = "none";
+		// document.getElementById("checkList").style.display = "block";
+		// document.getElementById("title").style.display = "none";
+		// cleanCheckList();
+		// fillCheckList();
 	});
 
 	internButton.addEventListener('click', function(){
