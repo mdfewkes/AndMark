@@ -87,7 +87,7 @@ p {
 
 	var startTime = Math.floor(Date.now() / 1000);
 	var currentTime = Math.floor(Date.now() / 1000);
-	var eventList = [];
+	var eventList = []; //eventList format [eventString, cueNumber, checked]
 	var usingRealtime = true;
 	var collapsList = [true,
 						document.getElementById("C_Sec1").checked,
