@@ -265,11 +265,12 @@ p {
 	function fillCheckList() {
 		var parent = document.getElementById("check");
 		for(i in eventList) {
-			var child = document.createElement("div");
-			child.id = "checkItem";
-			var text = eventList[i][0].split("<br>");
-			child.innerHTML = text[0];
-			parent.appendChild(child);
+			var text = eventList[i][0].split("<br>")[0];
+			var childText = document.createTextNode(text);
+			var childBreak = document.createElement("br");
+			childText.id = "checkItem";
+			parent.appendChild(childText);
+			parent.appendChild(childBreak);
 		}
 
 	}
