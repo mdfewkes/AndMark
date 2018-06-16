@@ -34,13 +34,16 @@ p {
 	<p><button class="button" id="B_Sec2">Cue 2</button><textarea id="T_Sec2" rows="1" cols="20">Cut End</textarea>
 	<p><button class="button" id="B_Sec3">Cue 3</button><textarea id="T_Sec3" rows="1" cols="20">Swear</textarea>
 	<p><button class="button" id="B_Sec4">Cue 4</button><textarea id="T_Sec4" rows="1" cols="20">Other</textarea>
+	<p>Last Cue
+	<p id="monitor">
+	<p>All Cues
 	<p id="print">
 
 <script>
 	document.getElementById("B_UseReal").style.fontWeight = "bold";
 	var startTime = Math.floor(Date.now() / 1000);
 	var currentTime = Math.floor(Date.now() / 1000);
-	var eventList = "";
+	var eventList = [];
 	var usingRealtime = true;
 	
 	var internButton = document.getElementById("B_UseIntern");
@@ -67,14 +70,15 @@ p {
 		startTime = Math.floor(Date.now() / 1000);
 	});
 	resetButton.addEventListener('click', function(){
-		eventList = "";
-		document.getElementById("print").innerHTML = eventList;
+		eventList = [];
+		document.getElementById("print").innerHTML = "";
+		document.getElementById("monitor").innerHTML = "";
 	});
 
-	cue1Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec1").value);});
-	cue2Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec2").value);});
-	cue3Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec3").value);});
-	cue4Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec4").value);});
+	cue1Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec1").value, 1);});
+	cue2Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec2").value, 2);});
+	cue3Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec3").value, 3);});
+	cue4Button.addEventListener('click', function(){addToCueList(document.getElementById("T_Sec4").value, 4);});
 
 
 	function timeToString() {
@@ -100,10 +104,26 @@ p {
 		return stringer;
 	}
 
-	function addToCueList(cueName) {
+	function addToCueList(cueName, cueNumber) {
 		var addCue = "" + cueName + " " + timeToString() + "<br>";
-		eventList += addCue;
-		document.getElementById("print").innerHTML = eventList;
+		eventList.push([addCue, cueNumber]);
+		var printList = "";
+		for (i in eventList) {
+			printList += eventList[i][0];
+		}
+		document.getElementById("print").innerHTML = printList;
+		var monitorList = "";
+		var length = eventList.length;
+		if(length >= 1) {
+			monitorList += eventList[length-1][0];
+		}
+		// if(length >= 2) {
+		// 	monitorList += eventList[length-2][0];
+		// }
+		// if(length >= 3) {
+		// 	monitorList += eventList[length-3][0];
+		// }
+		document.getElementById("monitor").innerHTML = monitorList;
 	}
 
 	function checkTime(i) {
